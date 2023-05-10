@@ -142,73 +142,100 @@ mod tests {
 
     #[test]
     fn test_add_positive() {
-        let a = MyBigInt::from(100);
-        let b = MyBigInt::from(200);
-        let expected = MyBigInt::from(300);
+        let mut a = MyBigInt::new();
+        a.set_hex("64");
+        let mut b = MyBigInt::new();
+        b.set_hex("C8");
+        let mut expected = MyBigInt::new();
+        expected.set_hex("12C");
         assert_eq!(a.add(&b), expected);
     }
 
     #[test]
     fn test_add_negative() {
-        let a = MyBigInt::from(-100);
-        let b = MyBigInt::from(-200);
-        let expected = MyBigInt::from(-300);
+        let mut a = MyBigInt::new();
+        a.set_hex("-64");
+        let mut b = MyBigInt::new();
+        b.set_hex("-C8");
+        let mut expected = MyBigInt::new();
+        expected.set_hex("-12C");
         assert_eq!(a.add(&b), expected);
     }
 
     #[test]
     fn test_add_mixed_signs() {
-        let a = MyBigInt::from(100);
-        let b = MyBigInt::from(-200);
-        let expected = MyBigInt::from(-100);
+        let mut a = MyBigInt::new();
+        a.set_hex("64");
+        let mut b = MyBigInt::new();
+        b.set_hex("-C8");
+        let mut expected = MyBigInt::new();
+        expected.set_hex("-64");
         assert_eq!(a.add(&b), expected);
     }
 
     #[test]
     fn test_sub_positive() {
-        let a = MyBigInt::from(300);
-        let b = MyBigInt::from(200);
-        let expected = MyBigInt::from(100);
+        let mut a = MyBigInt::new();
+        a.set_hex("12C");
+        let mut b = MyBigInt::new();
+        b.set_hex("C8");
+        let mut expected = MyBigInt::new();
+        expected.set_hex("64");
         assert_eq!(a.sub(&b), expected);
     }
 
     #[test]
     fn test_sub_negative() {
-        let a = MyBigInt::from(-300);
-        let b = MyBigInt::from(-200);
-        let expected = MyBigInt::from(-100);
+        let mut a = MyBigInt::new();
+        a.set_hex("-12C");
+        let mut b = MyBigInt::new();
+        b.set_hex("-C8");
+        let mut expected = MyBigInt::new();
+        expected.set_hex("-64");
         assert_eq!(a.sub(&b), expected);
     }
 
     #[test]
     fn test_sub_mixed_signs() {
-        let a = MyBigInt::from(100);
-        let b = MyBigInt::from(-200);
-        let expected = MyBigInt::from(300);
+        let mut a = MyBigInt::new();
+        a.set_hex("64");
+        let mut b = MyBigInt::new();
+        b.set_hex("-C8");
+        let mut expected = MyBigInt::new();
+        expected.set_hex("12C");
         assert_eq!(a.sub(&b), expected);
     }
 
     #[test]
     fn test_modulus_positive() {
-        let a = MyBigInt::from(7);
-        let b = MyBigInt::from(3);
-        let expected = MyBigInt::from(1);
+        let mut a = MyBigInt::new();
+        a.set_hex("7");
+        let mut b = MyBigInt::new();
+        b.set_hex("3");
+        let mut expected = MyBigInt::new();
+        expected.set_hex("1");
         assert_eq!(a.modulus(&b), expected);
     }
 
     #[test]
     fn test_modulus_negative() {
-        let a = MyBigInt::from(-7);
-        let b = MyBigInt::from(3);
-        let expected = MyBigInt::from(2);
+        let mut a = MyBigInt::new();
+        a.set_hex("-7");
+        let mut b = MyBigInt::new();
+        b.set_hex("3");
+        let mut expected = MyBigInt::new();
+        expected.set_hex("2");
         assert_eq!(a.modulus(&b), expected);
     }
 
     #[test]
     fn test_modulus_mixed_signs() {
-        let a = MyBigInt::from(-7);
-        let b = MyBigInt::from(-3);
-        let expected = MyBigInt::from(2);
+        let mut a = MyBigInt::new();
+        a.set_hex("-7");
+        let mut b = MyBigInt::new();
+        b.set_hex("-3");
+        let mut expected = MyBigInt::new();
+        expected.set_hex("2");
         assert_eq!(a.modulus(&b), expected);
     }
 }
